@@ -8,10 +8,10 @@
 # 1ª ETAPA: CONFIGURAÇÃO DO AMBIENTE
 # ----------------------------------
 
-# Instalar pacotes (quem ainda não tiver)
-#install.packages("tidyverse")
-#install.packages("corrplot")
-#install.packages("plotly")
+# Instalar pacotes
+install.packages("tidyverse")
+install.packages("corrplot")
+install.packages("plotly")
 
 # Carregar os pacotes que vamos utilizar
 library(tidyverse)
