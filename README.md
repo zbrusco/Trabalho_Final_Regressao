@@ -1,114 +1,88 @@
-# 🩺 Análise Preditiva de Custos de Seguro de Saúde
+# 🩺 Predictive Analysis of Health Insurance Costs
 
-![Linguagem](https://img.shields.io/badge/Linguagem-R-blue.svg)
-![Licença](https://img.shields.io/badge/Licença-MIT-green.svg)
+![Language](https://img.shields.io/badge/Language-R-blue.svg)
+![License](https://img.shields.io/badge/License-MIT-green.svg)
 
-Este repositório contém o **trabalho final da disciplina Introdução à Ciência de Dados com R**.
-O projeto consiste na construção de um **modelo de regressão linear múltipla** para prever os custos de seguro de saúde com base em características demográficas e de estilo de vida dos segurados.
-
----
-
-## 📚 Tabela de Conteúdos
-
-- [📖 Contexto do Projeto](#-contexto-do-projeto)
-- [🎯 Objetivo](#-objetivo)
-- [🗂️ O Dataset](#️-o-dataset)
-- [🔎 Metodologia](#-metodologia)
-- [📊 Principais Resultados](#-principais-resultados)
-- [⚙️ Como Executar o Projeto](#️-como-executar-o-projeto)
-- [👨‍💻 Autores](#-autores)
+This repository contains the **final project for the course Introduction to Data Science with R**.  
+It develops a **multiple linear regression model** to predict health insurance costs based on demographic and lifestyle factors.
 
 ---
 
-## 📖 Contexto do Projeto
+## Table of Contents
+- [📖 Project Overview](#project-overview)
+- [🎯 Objective](#objective)
+- [🗂️ Dataset](#dataset)
+- [🔎 Methodology](#methodology)
+- [📊 Key Findings](#key-findings)
+- [⚙️ How to Run](#how-to-run)
+- [👨‍💻 Authors](#authors)
+ 
+---
 
-Este trabalho foi desenvolvido como avaliação final para a disciplina **Introdução à Ciência de Dados**.
-O objetivo foi aplicar de forma prática todas as etapas de um projeto de ciência de dados, desde a coleta e limpeza dos dados até a modelagem estatística, validação e comunicação dos resultados.
+## Project Overview
+
+Developed as the final assessment for the **Introduction to Data Science** course, this project applies all stages of a data science workflow — from data cleaning and exploration to modeling, validation, and communication of results.
 
 ---
 
-## 🎯 Objetivo
+## Objective
 
-Identificar e quantificar o impacto de fatores demográficos e de estilo de vida nos custos de seguro de saúde. A análise evoluiu de um modelo de regressão linear geral para uma abordagem segmentada, que modela separadamente os grupos de fumantes e não fumantes para capturar com maior precisão a dinâmica de custos de cada um.
-
----
-
-## 🗂️ O Dataset
-
-O estudo utilizou o conjunto de dados **"Medical Cost Personal Datasets"**, disponível publicamente no Kaggle.
-
-- **Fonte:** [Kaggle - Medical Cost Personal Datasets](https://www.kaggle.com/datasets/mirichoi0218/insurance)
-- **Observações:** 1.338
-- **Variáveis principais:**
-  - `age`
-  - `sex`
-  - `bmi`
-  - `children`
-  - `smoker`
-  - `region`
-  - `charges` (variável alvo)
+To measure how demographic and lifestyle variables impact health insurance costs.  
+The analysis evolved from a general linear regression model to a **segmented approach**, modeling smokers and non-smokers separately for better cost prediction accuracy.
 
 ---
 
-## 🔎 Metodologia
+## Dataset
 
-1. **Análise Exploratória e Pré-processamento:** Investigação inicial das relações entre variáveis e tratamento da assimetria da variável alvo charges com transformação logarítmica.
+The study uses the public **"Medical Cost Personal Datasets"** from Kaggle.
 
-2. **Modelo Geral Inicial:** Construção de um primeiro modelo de regressão linear múltipla com todos os dados. Este modelo alcançou um R² ajustado de 74,4%, mas a análise de resíduos indicou heterocedasticidade, motivando a segmentação.
-
-3. **Modelagem Segmentada:** Desenvolvimento de dois modelos distintos e mais robustos:
-
-- Um para o subgrupo de não fumantes.
-
-- Um modelo de interação para o subgrupo de fumantes, capturando o efeito combinado dos fatores de risco.
+- **Source:** [Kaggle - Medical Cost Personal Datasets](https://www.kaggle.com/datasets/mirichoi0218/insurance)  
+- **Observations:** 1,338  
+- **Main Variables:**  
+  - `age`, `sex`, `bmi`, `children`, `smoker`, `region`, `charges` (target variable)
 
 ---
 
-## 📊 Principais Resultados
+## Methodology
 
-A abordagem segmentada foi crucial para entender a estrutura de custos, revelando dois comportamentos distintos:
-
-**Para Não Fumantes**
-
-Os custos seguem um padrão previsível e moderado, com o modelo explicando **69% da variabilidade (R² ajustado = 0.686)**.
-
-- Principais Preditores: `Idade` (com efeito curvo), `número de filhos` e `região`.
-
-- O IMC não se mostrou um fator de forte impacto isoladamente para este grupo.
-
-**Para Fumantes**
-
-A dinâmica de custos é mais complexa e de maior magnitude. O tabagismo atua como um amplificador de risco.
-
-- O modelo de interação explicou **91,4% da variabilidade dos custos (R² ajustado = 0.914)**.
-
-- **Principal Descoberta:** A combinação de **tabagismo, obesidade (IMC ≥ 30) e idade** eleva os custos de forma exponencial.
+1. **Exploration & Preprocessing:** Initial data exploration and log transformation of `charges` to handle skewness.  
+2. **General Model:** Initial multiple regression achieved **Adjusted R² = 74.4%**, but residual analysis showed heteroskedasticity.  
+3. **Segmented Models:**  
+   - One model for **non-smokers**.  
+   - One **interaction model** for **smokers**, accounting for combined risk factors.
 
 ---
 
-## ⚙️ Como Executar o Projeto
+## Key Findings
 
-### 1. Pré-requisitos
+### Non-Smokers
+- **Adjusted R² = 0.686**  
+- Costs show a moderate, predictable pattern.  
+- Key predictors: `age`, `children`, and `region`.  
+- BMI had limited isolated impact.
 
-- **R** (versão 4.0 ou superior)
+### Smokers
+- **Adjusted R² = 0.914**  
+- Costs are higher and more volatile.  
+- **Main finding:** The combination of **smoking, obesity (BMI ≥ 30), and age** exponentially increases costs.
+
+---
+
+## How to Run
+
+### 1. Requirements
+- **R** (v4.0+)  
 - **RStudio**
 
-### 2. Instalação
-
-Clone este repositório para a sua máquina local:
-
+### 2. Installation
+Clone the repository:
 ```bash
 git clone https://github.com/zbrusco/health_cost_analysis
 ```
 
-Abra o projeto no **RStudio** clicando em `health_cost_analysis.Rproj`.
-Isso irá configurar o diretório de trabalho automaticamente.
-
 ---
 
-## 👨‍💻 Autores
-
-Este projeto foi desenvolvido por:
+## Authors
 
 - [Andre Loureiro Montini Ferreira](https://github.com/jfandre00)
 - [Lucas Amorim Brusco](https://github.com/zbrusco)
